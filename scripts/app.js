@@ -4,12 +4,6 @@ const btnBuscar = document.getElementById('btnGet1');
 const txtBuscar = document.getElementById('inputGet1Id');
 
 const btnAgregar = document.getElementById('btnPost');
-const txtName = document.getElementById('inputPostNombre');
-const txtLastName = document.getElementById('inputPostApellido');
-const NameLastName = {
-    name: txtName.value,
-    lastName: txtLastName
-}
 
 let fetchJSONData = function (url, type) {
     let result = {};
@@ -57,9 +51,9 @@ btnBuscar.addEventListener('click', () => {
     listUsersID(txtBuscar.value);
 });
 
-function listUsersAdd() {
-    let type = { method: "POST", headers: { "Content-type": "application/json; charset=UTF-8" } };
-    fetchJSONData(urlA + '/' + id, type).then(function (resultObj) {
+function listUsersAdd(name) {
+    let type = { method: "POST", headers: { "Content-type": "application/json; charset=UTF-8" }, body: JSON.stringify(name) };
+    fetchJSONData(urlA, type).then(function (resultObj) {
         if (resultObj.status === "ok") {
             let users = resultObj.data
             console.log(users);
@@ -68,5 +62,12 @@ function listUsersAdd() {
 }
 
 btnAgregar.addEventListener('click', () => {
+    const txtName = document.getElementById('inputPostNombre');
+    const txtLastName = document.getElementById('inputPostApellido');
+    const NameLastName = {
+        name: txtName.value,
+        lastname: txtLastName.value,
+    }
     listUsersAdd(NameLastName);
+
 });
