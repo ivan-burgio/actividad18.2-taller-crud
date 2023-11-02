@@ -1,8 +1,8 @@
 let urlA = "https://6542c0fc01b5e279de1f8707.mockapi.io/users";
 
 const btnBuscar = document.getElementById('btnGet1');
-
 const txtBuscar = document.getElementById('inputGet1Id');
+
 const btnAgregar = document.getElementById('btnPost');
 
 const btnModificar = document.getElementById('btnPut');
@@ -113,4 +113,8 @@ function listUsersDelete(id) {
 
 btnDelete.addEventListener('click', () => {
     listUsersDelete(txtDelete.value);
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+    
 })
